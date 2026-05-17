@@ -27,11 +27,15 @@ model, X_columns, explainer = load_assets()
 
 #--- NEW: HISTORY LOGGING FUNCTION ---
 def save_to_history(df_to_save, filename="patient_history.csv"):
-    if not os.path.isfile(filename):
+    # Check if file exists and has content
+    file_exists = os.path.isfile(filename) and os.path.getsize(filename) > 0
+    
+    if not file_exists:
+        # File is new or empty: Save with headers
         df_to_save.to_csv(filename, index=False)
     else:
+        # File already has data: Append without adding headers again
         df_to_save.to_csv(filename, mode='a', index=False, header=False)
-
 # =========================
 # UPLOAD FILE
 # =========================

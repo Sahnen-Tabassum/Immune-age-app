@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.set_page_config(page_title="Immune Age AI", layout="wide")
+st.set_page_config(page_title="Home", layout="wide")
 
 st.markdown("""
 <style>
